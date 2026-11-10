@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Patrimônio de Trabiju</title>
+<link rel="stylesheet" href="fontes/fontes.css">
+<style>
+  /* Paleta tirada do próprio mural "Mapa Geral do Brasil" */
+  :root {
+    --papel: #efe4cb;
+    --papel-claro: #f7f0de;
+    --azul: #1d3f63;      /* Goiás */
+    --azul-noite: #15243b; /* Rio Grande do Sul */
+    --ocre: #dd9b21;      /* Mato Grosso */
+    --ocre-escuro: #b0741a;
+    --salvia: #96afa6;    /* Pará */
+    --rosa: #d9b9b6;      /* Maranhão */
+    --oceano: #a9bccb;
+    --tinta: #22324a;
+    --branco-logo: #fdfdfd; /* igual ao fundo da logo oficial */
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #888; }
+  #arte {
+    position: relative;
+    width: 1080px; height: 1350px;
+    overflow: hidden;
+    background: var(--papel);
+    font-family: 'Lora', serif;
+    color: var(--tinta);
+  }
+
+  /* ---------- fundo: papel envelhecido + grade de azulejo ---------- */
+  .fundo, .grade, .grao, .vinheta { position: absolute; inset: 0; pointer-events: none; }
+  .fundo {
+    background:
+      radial-gradient(ellipse 70% 45% at 50% 60%, #f6eedb 0%, rgba(246,238,219,0) 70%),
+      linear-gradient(180deg, #ede0c2 0%, #f1e6cf 40%, #eadbb9 100%);
+  }
+  .grade {
+    background-image:
+      linear-gradient(rgba(29,63,99,.055) 1.2px, transparent 1.2px),
+      linear-gradient(90deg, rgba(29,63,99,.055) 1.2px, transparent 1.2px);
+    background-size: 60px 60px;
+    background-position: 0 0;
+  }
+  .grao { opacity: .5; mix-blend-mode: multiply; }
+  .vinheta {
+    background: radial-gradient(ellipse 85% 75% at 50% 48%, rgba(0,0,0,0) 55%, rgba(120,84,30,.22) 100%);
+  }
+
+  /* ---------- faixas de azulejo ---------- */
+  .azulejo {
+    position: absolute; left: 0; right: 0; height: 36px;
+    background-image: var(--padrao-azulejo);
+    background-size: 36px 36px;
+    background-repeat: repeat-x;
+    box-shadow: 0 2px 0 var(--ocre), 0 5px 0 var(--azul);
+  }
+  .azulejo.topo { top: 0; }
+  .azulejo.base { top: 1120px; box-shadow: 0 -2px 0 var(--ocre), 0 -5px 0 var(--azul); }
+
+  /* ---------- quadros ---------- */
+  .parede {
+    position: absolute; top: 60px; left: 0; right: 0;
+    display: flex; justify-content: center; align-items: flex-start; gap: 44px;
+  }
+  .quadro { position: relative; }
+  .moldura {
+    position: relative;
+    padding: 15px;
+    background:
+      linear-gradient(135deg, rgba(255,255,255,.18), rgba(0,0,0,.18)),
+      repeating-linear-gradient(92deg, #7a4a24 0 3px, #6a3d1c 3px 7px, #825229 7px 9px, #6f411e 9px 13px);
+    border-radius: 3px;
+    box-shadow:
+      inset 0 0 0 1px rgba(0,0,0,.45),
+      inset 2px 2px 0 rgba(255,220,170,.25),
+      0 22px 34px -12px rgba(70,40,10,.55),
+      0 4px 8px rgba(70,40,10,.25);
+  }
+  .filete {
+    padding: 3px;
+    background: linear-gradient(135deg, #f0d48a, #b8862f 45%, #f3dc9c 70%, #a8761f);
+    box-shadow: inset 0 0 0 1px rgba(80,50,10,.5);
+  }
+  .passe {
+    background: #ffffff;
+    padding: 12px;
+    box-shadow: inset 0 0 6px rgba(0,0,0,.18);
+  }
+  .passe img { display: block; height: 402px; width: auto; }
+
+  /* plaqueta de museu presa na moldura */
+  .plaqueta {
+    position: absolute; left: 50%; bottom: -46px; transform: translateX(-50%);
+    width: calc(100% - 36px);
+    display: flex; align-items: center; gap: 12px;
+    padding: 9px 14px 9px 10px;
+    background: linear-gradient(180deg, #fbf5e6, #efe3c6);
+    border: 1.5px solid var(--azul);
+    outline: 3px solid #fbf5e6;
+    box-shadow: 0 0 0 4.5px var(--ocre), 0 10px 18px -6px rgba(60,35,5,.45);
+    border-radius: 6px;
+  }
+  .plaqueta .icone {
+    flex: none; width: 46px; height: 46px; border-radius: 50%;
+    display: grid; place-items: center;
+    background: radial-gradient(circle at 35% 30%, #f2c066, var(--ocre) 55%, var(--ocre-escuro));
+    box-shadow: inset 0 0 0 2px rgba(255,255,255,.35), 0 1px 2px rgba(0,0,0,.3);
+  }
+  .plaqueta .icone svg { width: 27px; height: 27px; }
+  .plaqueta .t1 {
+    font-family: 'Oswald', sans-serif; font-weight: 600;
+    font-size: 21px; letter-spacing: .045em; text-transform: uppercase;
+    color: var(--azul); line-height: 1.12;
+  }
+  .plaqueta .t2 {
+    font-family: 'Lora', serif; font-style: italic; font-weight: 500;
+    font-size: 18px; color: #4a3a22; line-height: 1.2;
+  }
+
+  /* ---------- rosa dos ventos (marca d'água) ---------- */
+  .rosa-ventos {
+    position: absolute; left: 50%; top: 610px; width: 520px; height: 520px;
+    transform: translateX(-50%); opacity: .075; pointer-events: none;
+  }
+
+  /* ---------- título ---------- */
+  .miolo {
+    position: absolute; left: 0; right: 0; top: 584px; bottom: 236px;
+    display: flex; flex-direction: column; align-items: center; justify-content: space-evenly;
+  }
+  .titulo { position: relative; width: 100%; text-align: center; }
+  .fita {
+    position: relative; display: inline-block;
+    padding: 6px 40px 7px;
+    font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 32px;
+    letter-spacing: .16em; color: var(--papel-claro);
+    background: var(--azul);
+    box-shadow: inset 0 0 0 2px var(--azul), inset 0 0 0 3.5px rgba(221,155,33,.9);
+  }
+  .fita::before, .fita::after {
+    content: ""; position: absolute; top: 9px; width: 34px; height: 100%;
+    background: var(--azul-noite); z-index: -1;
+  }
+  .fita::before { left: -24px; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 12px 50%); }
+  .fita::after  { right: -24px; clip-path: polygon(0 0, 100% 0, calc(100% - 12px) 50%, 100% 100%, 0 100%); }
+  .fita-wrap { position: relative; z-index: 1; isolation: isolate; }
+
+  .linha-patrimonio { position: relative; display: flex; justify-content: center; align-items: center; margin-top: 8px; }
+  .patrimonio {
+    font-family: 'Playfair Display', serif; font-weight: 900;
+    font-size: 116px; line-height: 1.0; letter-spacing: .005em;
+    color: var(--azul);
+    text-shadow: 3px 3px 0 rgba(221,155,33,.85), 0 1px 0 rgba(255,255,255,.4);
+  }
+  .louro { position: absolute; top: -26px; width: 108px; height: 174px; }
+  .louro.esq { left: 52px; }
+  .louro.dir { right: 52px; transform: scaleX(-1); }
+
+  .subtitulo {
+    margin-top: 4px;
+    font-family: 'Oswald', sans-serif; font-weight: 600;
+    font-size: 36px; line-height: 1.14; letter-spacing: .075em;
+    color: var(--azul-noite); text-transform: uppercase;
+  }
+  .ornamento { display: flex; align-items: center; justify-content: center; gap: 14px; margin: 10px 0 8px; }
+  .ornamento i { display: block; width: 210px; height: 2px; background: linear-gradient(90deg, rgba(176,116,26,0), var(--ocre-escuro)); }
+  .ornamento i:last-child { transform: scaleX(-1); }
+  .ornamento svg { width: 26px; height: 26px; }
+
+  .leis { font-size: 28px; line-height: 1.26; font-weight: 500; color: #2b2a2a; }
+  .leis b { font-weight: 600; color: var(--azul); }
+
+  /* ---------- faixa de destaque ---------- */
+  .destaque {
+    position: relative; width: 880px;
+    padding: 13px 26px 14px;
+    text-align: center;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(255,255,255,.12), rgba(255,255,255,0) 60%),
+      var(--azul);
+    border-radius: 16px;
+    box-shadow:
+      inset 0 0 0 3px var(--azul),
+      inset 0 0 0 4.5px var(--ocre),
+      0 12px 22px -10px rgba(21,36,59,.7);
+    color: var(--papel-claro);
+    font-size: 28px; line-height: 1.22; font-weight: 500;
+  }
+  .destaque em {
+    font-family: 'Playfair Display', serif; font-style: italic; font-weight: 700;
+    font-size: 31px; color: #f2b84b;
+  }
+
+  /* ---------- rodapé com a logo oficial (sem alteração) ---------- */
+  .rodape {
+    position: absolute; left: 0; right: 0; top: 1156px; bottom: 0;
+    background: var(--branco-logo);
+    display: grid; place-items: center;
+  }
+  .rodape img { display: block; width: 703px; height: 185px; image-rendering: auto; }
+</style>
+</head>
+<body>
+<div id="arte">
+  <div class="fundo"></div>
+  <div class="grade"></div>
+  <svg class="grao" width="1080" height="1350" aria-hidden="true">
+    <filter id="ruido"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="3" seed="7"/><feColorMatrix values="0 0 0 0 .45  0 0 0 0 .33  0 0 0 0 .16  0 0 0 .55 0"/></filter>
+    <filter id="manchas"><feTurbulence type="fractalNoise" baseFrequency=".006" numOctaves="3" seed="3"/><feColorMatrix values="0 0 0 0 .55  0 0 0 0 .40  0 0 0 0 .15  0 0 0 .35 -.05"/></filter>
+    <rect width="100%" height="100%" filter="url(#manchas)"/>
+    <rect width="100%" height="100%" filter="url(#ruido)" opacity=".55"/>
+  </svg>
+  <div class="vinheta"></div>
+
+  <div class="azulejo topo"></div>
+
+  <!-- quadros: fotos originais, sem filtro nem retoque -->
+  <div class="parede">
+    <figure class="quadro">
+      <div class="moldura"><div class="filete"><div class="passe">
+        <img src="fotos/quadro-diplomandos-1955.jpg" alt="Quadro Diplomandos de 1955 do Grupo Escolar de Trabiju">
+      </div></div></div>
+      <figcaption class="plaqueta">
+        <span class="icone">
+          <svg viewBox="0 0 24 24" fill="#fbf5e6"><path d="M12 3.6 0.8 9.1 12 14.6l9.2-4.5v5.6h1.6V9.1z"/><path d="M5.4 12v3.6c0 1.7 3 3.4 6.6 3.4s6.6-1.7 6.6-3.4V12L12 15.3z"/></svg>
+        </span>
+        <span><span class="t1">Diplomandos de 1955</span><br><span class="t2">do Grupo Escolar de Trabiju</span></span>
+      </figcaption>
+    </figure>
+
+    <figure class="quadro">
+      <div class="moldura"><div class="filete"><div class="passe">
+        <img id="mural" src="fotos/mural-sem-data.png" alt="Pintura Mapa Geral do Brasil">
+      </div></div></div>
+      <figcaption class="plaqueta">
+        <span class="icone">
+          <svg viewBox="0 0 24 24"><path fill="#fbf5e6" d="M12 2.8C6.6 2.8 2.4 6.6 2.4 11.4c0 4.5 3.6 8.4 8.2 8.4 1.4 0 2.1-.9 2.1-1.9 0-.5-.2-1-.5-1.4-.3-.4-.5-.8-.5-1.3 0-1 .8-1.8 1.9-1.8h2.3c3.1 0 5.7-2.4 5.7-5.7C21.6 5.7 17.4 2.8 12 2.8z"/><circle cx="7.2" cy="11" r="1.5" fill="#b0741a"/><circle cx="9.6" cy="7.2" r="1.5" fill="#1d3f63"/><circle cx="14.4" cy="6.8" r="1.5" fill="#b0741a"/><circle cx="17.6" cy="10" r="1.5" fill="#1d3f63"/></svg>
+        </span>
+        <span><span class="t1">“Mapa Geral do Brasil”</span><br><span class="t2">pintura de 1942</span></span>
+      </figcaption>
+    </figure>
+  </div>
+
+  <!-- rosa dos ventos em marca d'água -->
+  <svg class="rosa-ventos" viewBox="-100 -100 200 200" aria-hidden="true">
+    <g fill="none" stroke="#1d3f63" stroke-width="1.2">
+      <circle r="96"/><circle r="90"/><circle r="62"/><circle r="30"/>
+    </g>
+    <g fill="#1d3f63" id="pontas"></g>
+  </svg>
+
+  <div class="miolo">
+  <div class="titulo">
+    <div class="fita-wrap"><span class="fita">AGORA É</span></div>
+    <div class="linha-patrimonio">
+      <svg class="louro esq" viewBox="0 0 92 148" aria-hidden="true"></svg>
+      <div class="patrimonio">PATRIMÔNIO</div>
+      <svg class="louro dir" viewBox="0 0 92 148" aria-hidden="true"></svg>
+    </div>
+    <div class="subtitulo">Histórico, cultural e<br>imaterial de Trabiju</div>
+    <div class="ornamento">
+      <i></i>
+      <svg viewBox="-13 -13 26 26" aria-hidden="true">
+        <g fill="#1d3f63"><path d="M0-12 3-3 12 0 3 3 0 12-3 3-12 0-3-3z"/></g>
+        <circle r="3" fill="#dd9b21"/>
+      </svg>
+      <i></i>
+    </div>
+    <div class="leis">Leis reconhecem quadros localizados na<br><b>E.E. “Alfredo Evangelista Nogueira”</b></div>
+  </div>
+
+  <div class="destaque">
+    Os dois quadros foram considerados<br><em>patrimônio histórico do município.</em>
+  </div>
+  </div>
+
+  <div class="azulejo base"></div>
+  <div class="rodape">
+    <img src="fotos/logo-prefeitura-trabiju.png" alt="Prefeitura de Trabiju — Nossa cidade, nosso orgulho, nosso progresso — Administração 2025-2028">
+  </div>
+</div>
+
+<script>
+  // versão com a foto do mural 100% crua: index.html?mural=cru
+  if (new URLSearchParams(location.search).get('mural') === 'cru') {
+    document.getElementById('mural').src = 'fotos/mural-cru.png';
+  }
+
+  // padrão de azulejo (inspirado nos azulejos de parede escolares)
+  const azulejo = `<svg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36'>
+    <rect width='36' height='36' fill='#f6eedb'/>
+    <g fill='#1d3f63'>
+      <path d='M0 0h9a9 9 0 0 1-9 9z'/><path d='M36 0v9a9 9 0 0 1-9-9z'/>
+      <path d='M0 36v-9a9 9 0 0 1 9 9z'/><path d='M36 36h-9a9 9 0 0 1 9-9z'/>
+      <path d='M18 6c2.6 3.4 2.6 8.6 0 12-2.6-3.4-2.6-8.6 0-12z'/>
+      <path d='M18 30c-2.6-3.4-2.6-8.6 0-12 2.6 3.4 2.6 8.6 0 12z'/>
+      <path d='M6 18c3.4-2.6 8.6-2.6 12 0-3.4 2.6-8.6 2.6-12 0z'/>
+      <path d='M30 18c-3.4 2.6-8.6 2.6-12 0 3.4-2.6 8.6-2.6 12 0z'/>
+    </g>
+    <circle cx='18' cy='18' r='2.6' fill='#dd9b21'/>
+    <g fill='#dd9b21'><circle cx='0' cy='0' r='3'/><circle cx='36' cy='0' r='3'/><circle cx='0' cy='36' r='3'/><circle cx='36' cy='36' r='3'/></g>
+    <rect width='36' height='36' fill='none' stroke='#1d3f63' stroke-opacity='.35' stroke-width='.8'/>
+  </svg>`;
+  document.documentElement.style.setProperty('--padrao-azulejo', `url("data:image/svg+xml,${encodeURIComponent(azulejo)}")`);
+
+  // ramos de louro
+  const NS = 'http://www.w3.org/2000/svg';
+  function ramo(svg) {
+    const g = document.createElementNS(NS, 'g');
+    const cx = 110, cy = 78, r = 92;
+    const a0 = 222 * Math.PI / 180, a1 = 138 * Math.PI / 180; // de baixo para o topo
+    const ponto = a => [cx + r * Math.cos(a), cy - r * Math.sin(a)];
+    // haste
+    const haste = document.createElementNS(NS, 'path');
+    let d = '';
+    for (let i = 0; i <= 40; i++) {
+      const [x, y] = ponto(a0 + (a1 - a0) * i / 40);
+      d += (i ? 'L' : 'M') + x.toFixed(1) + ' ' + y.toFixed(1);
+    }
+    haste.setAttribute('d', d); haste.setAttribute('fill', 'none');
+    haste.setAttribute('stroke', '#b0741a'); haste.setAttribute('stroke-width', '2.4'); haste.setAttribute('stroke-linecap', 'round');
+    g.appendChild(haste);
+    const n = 8;
+    for (let i = 0; i < n; i++) {
+      const t = (i + .35) / n;
+      const a = a0 + (a1 - a0) * t; const [x, y] = ponto(a);
+      // direção de avanço da haste
+      const [x2, y2] = ponto(a + (a1 - a0) * .01);
+      const dir = Math.atan2(y2 - y, x2 - x) * 180 / Math.PI;
+      const s = 1.15 - t * .45;
+      for (const lado of [-1, 1]) {
+        const folha = document.createElementNS(NS, 'path');
+        folha.setAttribute('d', 'M0 0C5-7 17-8 25 0 17 8 5 7 0 0z');
+        folha.setAttribute('transform', `translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${(dir + lado * 42).toFixed(1)}) scale(${s.toFixed(2)})`);
+        folha.setAttribute('fill', lado > 0 ? '#dd9b21' : '#c4861c');
+        folha.setAttribute('stroke', '#9a6514'); folha.setAttribute('stroke-width', '.6');
+        g.appendChild(folha);
+      }
+    }
+    // folha da ponta
+    const [xt, yt] = ponto(a1);
+    const [xb, yb] = ponto(a1 - (a1 - a0) * .01);
+    const dirt = Math.atan2(yt - yb, xt - xb) * 180 / Math.PI;
+    const ponta = document.createElementNS(NS, 'path');
+    ponta.setAttribute('d', 'M0 0C5-6 15-6 22 0 15 6 5 6 0 0z');
+    ponta.setAttribute('transform', `translate(${xt.toFixed(1)} ${yt.toFixed(1)}) rotate(${dirt.toFixed(1)}) scale(.75)`);
+    ponta.setAttribute('fill', '#dd9b21'); ponta.setAttribute('stroke', '#9a6514'); ponta.setAttribute('stroke-width', '.6');
+    g.appendChild(ponta);
+    svg.appendChild(g);
+  }
+  document.querySelectorAll('.louro').forEach(ramo);
+
+  // pontas da rosa dos ventos
+  const pontas = document.getElementById('pontas');
+  for (let i = 0; i < 16; i++) {
+    const ang = i * 22.5;
+    const comp = i % 4 === 0 ? 96 : i % 2 === 0 ? 70 : 48;
+    const larg = i % 4 === 0 ? 11 : i % 2 === 0 ? 8 : 5;
+    const p = document.createElementNS(NS, 'path');
+    p.setAttribute('d', `M0 ${-comp} L${larg} 0 L0 ${larg * .6} L${-larg} 0Z`);
+    p.setAttribute('transform', `rotate(${ang})`);
+    pontas.appendChild(p);
+  }
+</script>
+</body>
+</html>
