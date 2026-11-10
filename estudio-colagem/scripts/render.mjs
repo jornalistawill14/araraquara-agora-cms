@@ -54,7 +54,7 @@ if (remotion.status !== 0) process.exit(remotion.status ?? 1);
 // Folha de contato: 2 quadros por segundo, para revisar sem abrir o vídeo.
 const contato = `saida/${id}${sufixo}-contato.jpg`;
 const sonda = spawnSync('ffprobe', ['-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', video], {encoding: 'utf8'});
-const linhas = Math.max(1, Math.ceil((Number.parseFloat(sonda.stdout) || 20) * 2 / 8));
+const linhas = Math.max(1, Math.ceil(Math.round((Number.parseFloat(sonda.stdout) || 20) * 2) / 8));
 spawnSync(
   'ffmpeg',
   ['-loglevel', 'error', '-y', '-i', video, '-vf', `fps=2,scale=216:-1,tile=8x${linhas}:padding=6:color=white`, '-frames:v', '1', contato],

@@ -110,3 +110,8 @@ ou PNG transparente recebem a borda na hora (`"borda": 12`).
 3. Montar o banco de recortes de Araraquara (prédios, praças, ícones de serviço público) em `public/recortes/`.
 4. Legenda sincronizada com a narração direto no Remotion (`@remotion/captions` + transcrição).
 5. Gravar foley real: papel, fita, tesoura, carimbo e máquina de escrever.
+
+## Demo
+
+`exemplos/demo-agua-parada-720p.mp4` é o resultado do roteiro `roteiros/demo-agua-parada.json`,
+em prévia de 720p. A folha de contato está em `exemplos/demo-agua-parada-contato.jpg`.
