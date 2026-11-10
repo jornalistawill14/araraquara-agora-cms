@@ -1,0 +1,59 @@
+{
+  "id": "demo-agua-parada",
+  "titulo": "DEMO — Água parada (teste da estética de colagem)",
+  "formato": {"largura": 1080, "altura": 1920, "fps": 24},
+  "estilo": {"passosPorSegundo": 12, "grao": 0.5, "tremor": 1.2, "sons": true},
+  "materia": "Demonstração — sem matéria de origem",
+  "creditos": ["Ilustrações e foto sintética: produzidas para a demo (domínio da redação)", "Sons: provisórios, sintetizados"],
+  "cenas": [
+    {
+      "nome": "Gancho",
+      "duracao": 3.6,
+      "fundo": {"padrao": "jornal"},
+      "camadas": [
+        {"tipo": "recorte", "src": "recortes/mosquito.svg", "x": 515, "y": 760, "largura": 820, "rotacao": -6, "fita": [{"x": 52, "y": 17, "rot": -14}, {"x": 86, "y": 50, "rot": 72}], "entra": 0.15},
+        {"tipo": "texto", "estilo": "tarja", "texto": "ÁGUA PARADA", "x": 540, "y": 1190, "tamanho": 132, "rotacao": -2, "entra": 0.8},
+        {"tipo": "texto", "estilo": "marcador", "texto": "= berçário do mosquito", "x": 500, "y": 1370, "tamanho": 72, "rotacao": -3, "entra": 1.35},
+        {"tipo": "carimbo", "texto": "ALERTA", "x": 745, "y": 405, "tamanho": 84, "rotacao": 13, "entra": 2.1}
+      ]
+    },
+    {
+      "nome": "Onde se esconde",
+      "duracao": 5.0,
+      "transicao": "rasgo",
+      "fundo": {"cor": "#E9EEEC", "padrao": "quadriculado"},
+      "camadas": [
+        {"tipo": "texto", "estilo": "maquina", "texto": "Onde ele se esconde no seu quintal:", "x": 540, "y": 400, "tamanho": 54, "largura": 900, "rotacao": -1.5, "entra": 0.55},
+        {"tipo": "recorte", "src": "recortes/pneu.svg", "x": 270, "y": 770, "largura": 400, "rotacao": -8, "entra": 1.5},
+        {"tipo": "recorte", "src": "recortes/vaso.svg", "x": 715, "y": 760, "largura": 340, "rotacao": 6, "fita": ["topo"], "entra": 1.85},
+        {"tipo": "recorte", "src": "recortes/garrafa.svg", "x": 280, "y": 1200, "largura": 190, "rotacao": 12, "entra": 2.2},
+        {"tipo": "recorte", "src": "recortes/caixa-dagua.svg", "x": 690, "y": 1205, "largura": 430, "rotacao": -4, "fita": ["canto-dir"], "entra": 2.55},
+        {"tipo": "rabisco", "forma": "circulo", "x": 715, "y": 925, "largura": 400, "altura": 140, "entra": 3.4},
+        {"tipo": "texto", "estilo": "marcador", "texto": "até o pratinho!", "x": 590, "y": 1392, "tamanho": 64, "rotacao": -4, "entra": 3.9}
+      ]
+    },
+    {
+      "nome": "O que fazer",
+      "duracao": 4.6,
+      "transicao": "folha",
+      "fundo": {"cor": "#F1E8D4", "padrao": "pautado"},
+      "camadas": [
+        {"tipo": "recorte", "src": "fotos/telhado-meiotom.png", "x": 520, "y": 700, "largura": 860, "rotacao": 2.5, "borda": 0, "fita": ["topo"], "entra": 0.45},
+        {"tipo": "rabisco", "forma": "seta", "x": 412, "y": 600, "largura": 280, "altura": 200, "espessura": 14, "entra": 1.3},
+        {"tipo": "texto", "estilo": "resgate", "texto": "VIRE. TAMPE.\nLIMPE.", "x": 540, "y": 1270, "tamanho": 112, "largura": 960, "entra": 1.9}
+      ]
+    },
+    {
+      "nome": "Assinatura",
+      "duracao": 3.0,
+      "transicao": "rasgo",
+      "fundo": {"cor": "#D62828"},
+      "camera": "parada",
+      "camadas": [
+        {"tipo": "recorte", "src": "recortes/gota.svg", "x": 540, "y": 640, "largura": 200, "entrada": "pop", "rotacao": 8, "entra": 0.6},
+        {"tipo": "texto", "estilo": "tarja", "texto": "ARARAQUARA\nAGORA", "x": 540, "y": 980, "tamanho": 140, "entra": 0.9},
+        {"tipo": "texto", "estilo": "etiqueta", "texto": "araraquaraagora.com", "x": 540, "y": 1290, "tamanho": 54, "cor": "#161514", "rotacao": -2, "entra": 1.6}
+      ]
+    }
+  ]
+}

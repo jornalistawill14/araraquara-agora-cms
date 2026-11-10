@@ -1,0 +1,6 @@
+node_modules/
+saida/
+.remotion/
+*.log
+referencias/*
+!referencias/LEIAME.md

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 500" width="580" height="500">
+  <defs><clipPath id="corpo"><path d="M64 176 L516 176 L474 452 Q 290 488 106 452 Z"/></clipPath></defs>
+  <path d="M64 176 L516 176 L474 452 Q 290 488 106 452 Z" fill="#2F6DB5"/>
+  <g clip-path="url(#corpo)" stroke="#4C8BD0" stroke-width="12">
+    <path d="M40 252 Q 290 282 540 252"/><path d="M40 330 Q 290 360 540 330"/><path d="M40 404 Q 290 434 540 404"/>
+  </g>
+  <path d="M96 200 L120 440" stroke="#7FB0E3" stroke-width="12" stroke-linecap="round" opacity="0.6"/>
+  <ellipse cx="290" cy="176" rx="230" ry="42" fill="#245A97"/>
+  <ellipse cx="290" cy="180" rx="204" ry="30" fill="#6FA8DC"/>
+  <path d="M200 182 Q 240 172 280 182 Q 320 192 360 182" stroke="#D4E6F7" stroke-width="5" fill="none" stroke-linecap="round"/>
+  <g transform="rotate(-16 390 74)">
+    <ellipse cx="390" cy="80" rx="214" ry="40" fill="#1D4F8A"/>
+    <ellipse cx="390" cy="70" rx="214" ry="40" fill="#2F6DB5"/>
+    <ellipse cx="390" cy="58" rx="46" ry="14" fill="#245A97"/>
+  </g>
+</svg>

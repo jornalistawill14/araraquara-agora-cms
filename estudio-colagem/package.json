@@ -1,0 +1,22 @@
+{
+  "name": "estudio-colagem",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Estúdio de vídeos em colagem animada do Araraquara Agora (Remotion)",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "render": "node scripts/render.mjs",
+    "still": "node scripts/still.mjs",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.542",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "remotion": "4.0.542"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.2",
+    "typescript": "5.9.3"
+  }
+}
