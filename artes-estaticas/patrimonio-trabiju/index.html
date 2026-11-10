@@ -233,7 +233,7 @@
 
     <figure class="quadro">
       <div class="moldura"><div class="filete"><div class="passe">
-        <img id="mural" src="fotos/mural-sem-data.png" alt="Pintura Mapa Geral do Brasil">
+        <img src="fotos/mural-mapa-geral-do-brasil.png" alt="Pintura Mapa Geral do Brasil">
       </div></div></div>
       <figcaption class="plaqueta">
         <span class="icone">
@@ -284,11 +284,6 @@
 </div>
 
 <script>
-  // versão com a foto do mural 100% crua: index.html?mural=cru
-  if (new URLSearchParams(location.search).get('mural') === 'cru') {
-    document.getElementById('mural').src = 'fotos/mural-cru.png';
-  }
-
   // padrão de azulejo (inspirado nos azulejos de parede escolares)
   const azulejo = `<svg xmlns='http://www.w3.org/2000/svg' width='36' height='36' viewBox='0 0 36 36'>
     <rect width='36' height='36' fill='#f6eedb'/>

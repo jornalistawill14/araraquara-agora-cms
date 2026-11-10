@@ -6,25 +6,23 @@ e a pintura **"Mapa Geral do Brasil"**.
 
 | Arquivo | O que é |
 |---|---|
-| `saida/patrimonio-trabiju-feed.png` | Versão final. A data da câmera impressa no canto do mural foi apagada (só os dígitos). |
-| `saida/patrimonio-trabiju-feed-mural-cru.png` | A mesma arte com a foto do mural sem nenhum pixel alterado (a data aparece). |
+| `saida/patrimonio-trabiju-feed.png` | A arte final. |
 | `index.html` | A arte em HTML/CSS. Paleta tirada do próprio mural. |
-| `preparar_fotos.py` | Recorta a logo, enquadra o mural e apaga a data da câmera. Documenta tudo o que foi feito nas imagens. |
-| `render.js` | Gera os PNGs com o Chromium do Playwright. |
+| `preparar_fotos.py` | Recorta a logo e enquadra o mural. Documenta tudo o que foi feito nas imagens. |
+| `render.js` | Gera o PNG com o Chromium do Playwright. |
 
 ## Fidelidade das imagens
 
 - **Fotos dos quadros**: entram como foram tiradas. Só são redimensionadas para caber na moldura, sem filtro de cor, nitidez ou contraste.
-- **Mural**: na versão final, só os pixels da data "23/10/2026 10:35" mudaram, num canto do piso pintado. São 2.066 pixels, 0,108% da foto. A pintura e o mapa ficam intactos.
+- **Mural "Mapa Geral do Brasil"**: é uma pintura real e não pode ser alterada. A foto só é enquadrada num recorte retangular que contém a pintura inteira. O script confere que os pixels do recorte são idênticos aos do original. Por isso o início da data da câmera ("23/10/2…") continua visível, pequeno, no canto inferior direito, como na foto.
 - **Logo da Prefeitura**: recortada da arte oficial na resolução original (703 × 185) e exibida em 1:1 sobre um fundo branco igual ao dela.
 
 ## Como gerar de novo
 
 ```bash
 cd artes-estaticas/patrimonio-trabiju
-python3 -I preparar_fotos.py   # precisa de pillow, numpy, scipy, opencv-python-headless
-node render.js                 # versão final
-node render.js cru             # versão com a foto do mural crua
+python3 -I preparar_fotos.py   # precisa de pillow, numpy, scipy
+node render.js
 ```
 
 ## Checagem pendente
