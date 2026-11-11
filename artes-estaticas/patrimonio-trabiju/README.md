@@ -1,6 +1,6 @@
 # Arte: "Agora é Patrimônio" — Trabiju
 
-Card de feed (1080 × 1350) sobre as leis que tornaram patrimônio histórico, cultural e imaterial de Trabiju
+Card de feed (1080 × 1350) sobre as leis que tornaram patrimônio histórico, cultural e material de Trabiju
 dois quadros da E.E. "Alfredo Evangelista Nogueira": o quadro dos **Diplomandos de 1955 do Grupo Escolar de Trabiju**
 e a pintura **"Mapa Geral do Brasil"**.
 
